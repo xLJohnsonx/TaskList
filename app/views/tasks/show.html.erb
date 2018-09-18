@@ -1,9 +1,18 @@
 <% if @task.nil? %>
      <h1> 404 not found</h1>
 <% else %>
+  <header class="details-headings">
+    <ul>
+      <li>#</li>
+      <li>Item</li>
+      <li>Description</li>
+      <li>Complete By</li>
+    </ul>
+  </header>
   <article class="taski">
-    <h1><%=@task.id %></h1>
-    <h2><%= @task.description%></h2>
-    <h3><%= @task.completion_date %></h3>
+    <p><%=@task.id %></p>
+    <p><%=@task.item %></p>
+    <p><%= @task.description%></p>
+    <p><%= @task.completion_date %></p>
   </article>
 <% end %>

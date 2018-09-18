@@ -1,12 +1,10 @@
-<header>
-  <h1>TASK MASTER 3000</h1>
-  <h2>Do these things:</h2>
-</header>
+<article>
   <ol>
   <% @tasks.each do |task| %>
       <li><a href="/tasks/<%= task.id %>"><%= task.item %></li>
   <% end %>
   </ol>
+</article>
 
 
 <footer>

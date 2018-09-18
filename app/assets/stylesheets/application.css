@@ -18,12 +18,12 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: azure;
 }
-h1 {
+.head h1 {
     display: flex;
     justify-content: center;
     color: #B00100;
 }
-h2 {
+.head h2 {
     color: gold;
     background-color: darkslategrey;
     padding-left: 10px;
@@ -40,10 +40,25 @@ footer {
 }
 .taski {
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
 }
 .article h1{
     color: lawngreen;
 }
 .article h1{
     color: green;
+}
+ul {
+    list-style: none;
+}
+.details-headings ul{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.details-headings ul li{
+    padding-left: 10px;
+    padding-right: 100px;
 }
