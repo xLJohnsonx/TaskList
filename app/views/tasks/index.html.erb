@@ -1,0 +1,14 @@
+<header>
+  <h1>TASK MASTER 3000</h1>
+  <h2>Do these things:</h2>
+</header>
+  <ol>
+  <% @tasks.each do |task| %>
+      <li><a href="/tasks/<%= task.id %>"><%= task.item %></li>
+  <% end %>
+  </ol>
+
+
+<footer>
+  <p>Find me in app/views/tasks/index.html.erb</p>
+</footer>

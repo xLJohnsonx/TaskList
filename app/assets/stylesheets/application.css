@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: azure;
+}
+h1 {
+    display: flex;
+    justify-content: center;
+    color: #B00100;
+}
+h2 {
+    color: gold;
+    background-color: darkslategrey;
+    padding-left: 10px;
+    margin: 0 0;
+}
+li:hover {
+    font-style: italic;
+    font-size: larger;
+}
+footer {
+    display: flex;
+    align-content: flex-end;
+    color: #666666;
+}
+.taski {
+    display: flex;
+}
+.article h1{
+    color: lawngreen;
+}
+.article h1{
+    color: green;
+}

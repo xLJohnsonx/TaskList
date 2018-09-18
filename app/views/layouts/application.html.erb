@@ -8,8 +8,19 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+  <header>
+    <h1>Tsk Task</h1>
+    <nav>
+      <ul>
+        <li>
+          <a href="/tasks">Task Master</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
   </body>
+  <main>
+    <%= yield %>
+  </main>
 </html>
