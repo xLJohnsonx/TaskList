@@ -1,3 +1,4 @@
+require 'pry'
 # TASKS = [
 #   { id: 1,
 #     description: 'do homework',
@@ -13,8 +14,13 @@
 #     completion: 'September 18, 2018'}]
 
 class TasksController < ApplicationController
+  before_action :get_task, only: [:edit, :update, :destroy]
   def index
     @tasks = Task.all
+  end
+
+  def get_task
+    @task = Task.find(params[:id].to_i)
   end
 
   def show
@@ -23,6 +29,42 @@ class TasksController < ApplicationController
     if @task.nil?
       render :notfound, status: :not_found
     end
+  end
 
+  def create
+    @task = Task.new(item: params[:task][:item],
+                     description: params[:task][:description],
+                     completion_date: params[:task][:completion_date])
+    if @task.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  def new
+    @task = Task.new
+  end
+
+  def edit
+    # @task = Task.find(params[:id].to_i)
+  end
+
+  def update
+    # @task = Task.find(params[:id].to_i)
+    # raise params.inspect
+    if @task.update(item: params[:task][:item],
+                    description: params[:task][:description],
+                    completion_date: params[:task][:completion_date])
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    # @task = Task.find(params[:id].to_i)
+    @task.destroy
+    redirect_to root_path
   end
 end

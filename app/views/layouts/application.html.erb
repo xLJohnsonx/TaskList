@@ -14,7 +14,10 @@
     <nav>
       <ul>
         <li>
-          <a href="/tasks">Task Master</a>
+          <%= link_to "Task Master", "/tasks", id: "home-link"%>
+        </li>
+        <li>
+          <%= link_to "Add a task", new_task_path %>
         </li>
       </ul>
     </nav>

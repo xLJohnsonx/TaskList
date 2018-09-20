@@ -78,3 +78,5 @@ group :test do
   gem 'minitest-rails'
   gem 'minitest-reporters'
 end
+
+#gem "simple_calendar", "~> 2.0"

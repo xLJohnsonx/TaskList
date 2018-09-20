@@ -4,7 +4,7 @@
   <header class="details-headings">
     <ul>
       <li>#</li>
-      <li>Item</li>
+      <li>Task</li>
       <li>Description</li>
       <li>Complete By</li>
     </ul>
@@ -13,6 +13,17 @@
     <p><%=@task.id %></p>
     <p><%=@task.item %></p>
     <p><%= @task.description%></p>
+    <p><%= @task.due_date %></p>
     <p><%= @task.completion_date %></p>
+  </article>
+  <article class="changi">
+    <%= link_to "Edit This Task", edit_task_path(@task.id)%>
+  </article>
+  <article class="deleti">
+    <%= link_to "Delete This Task", @task, method: :delete%>
+  </article>
+  <article class="completi">
+    <%= link_to "Mark Complete", @task.id%>
+
   </article>
 <% end %>

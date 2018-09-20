@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+*= require simple_calendar
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 body {
     font-family: 'Poppins', sans-serif;

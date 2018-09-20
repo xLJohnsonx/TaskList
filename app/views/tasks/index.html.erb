@@ -1,12 +1,15 @@
 <article>
+  <% tasks = Task.all %>
   <ol>
   <% @tasks.each do |task| %>
       <li><a href="/tasks/<%= task.id %>"><%= task.item %></li>
   <% end %>
   </ol>
+  <% if tasks.size == 0 %>
+    <em> PARTAY! EAT, SLEEP, AND BE MERRY YOU HAVE NO TASKS!!!!</em>
+  <% end %>
 </article>
-
-
-<footer>
+    <footer>
   <p>Find me in app/views/tasks/index.html.erb</p>
 </footer>
+
