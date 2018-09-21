@@ -12405,3 +12405,318 @@ Processing by TasksController#new as HTML
 Completed 200 OK in 414ms (Views: 399.1ms | ActiveRecord: 0.0ms)
 
 
+Started POST "/tasks" for 127.0.0.1 at 2018-09-21 14:35:51 -0700
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5ruc73okDZXkrZgkBQyMZRxZrngNX18FaybDKXM9x6C2oxaqBkUY3lELhYojMatG8SAH0Lb+kNcH22Q4W3h+aQ==", "task"=>{"item"=>"eat", "description"=>"fruit", "due_date(1i)"=>"2018", "due_date(2i)"=>"9", "due_date(3i)"=>"22"}, "commit"=>"Add Task!"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:41
+  [1m[36mTask Create (13.1ms)[0m  [1m[32mINSERT INTO "tasks" ("item", "description", "created_at", "updated_at", "due_date") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["item", "eat"], ["description", "fruit"], ["created_at", "2018-09-21 21:35:51.868580"], ["updated_at", "2018-09-21 21:35:51.868580"], ["due_date", "2018-09-22"]]
+  ↳ app/controllers/tasks_controller.rb:41
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:41
+Redirected to http://localhost:3000/
+Completed 200 OK in 33ms (ActiveRecord: 16.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-09-21 14:35:51 -0700
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" ORDER BY "tasks"."due_date" ASC[0m
+  ↳ app/views/tasks/index.html.erb:13
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:32
+  Rendered tasks/index.html.erb within layouts/application (21.5ms)
+Completed 200 OK in 127ms (Views: 116.5ms | ActiveRecord: 2.4ms)
+
+
+Started PATCH "/task/10/incomplete" for 127.0.0.1 at 2018-09-21 14:35:57 -0700
+Processing by TasksController#incomplete as HTML
+  Parameters: {"authenticity_token"=>"k+eaEYrFwv7ZCO4JkrX6ZFs3j8ftRiiN0/uvqiG8MKXD/xBU9qTXtWyu86e0iN1Htk4mb1bn51+/Bgi7CfmJbA==", "id"=>"10"}
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:23
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:85
+  [1m[36mTask Update (1.6ms)[0m  [1m[33mUPDATE "tasks" SET "completion_date" = $1, "updated_at" = $2 WHERE "tasks"."id" = $3[0m  [["completion_date", nil], ["updated_at", "2018-09-21 21:35:57.251148"], ["id", 10]]
+  ↳ app/controllers/tasks_controller.rb:85
+  [1m[35m (16.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:85
+Redirected to http://localhost:3000/tasks/10
+Completed 302 Found in 28ms (ActiveRecord: 21.2ms)
+
+
+Started GET "/tasks/10" for 127.0.0.1 at 2018-09-21 14:35:57 -0700
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:28
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 100ms (Views: 90.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-09-21 14:36:08 -0700
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (21.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" ORDER BY "tasks"."due_date" ASC[0m
+  ↳ app/views/tasks/index.html.erb:13
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:32
+  Rendered tasks/index.html.erb within layouts/application (30.4ms)
+Completed 200 OK in 85ms (Views: 59.8ms | ActiveRecord: 21.7ms)
+
+
+Started GET "/tasks/7" for 127.0.0.1 at 2018-09-21 14:36:37 -0700
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mTask Load (2.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:28
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 96ms (Views: 82.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-09-21 14:36:44 -0700
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (21.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" ORDER BY "tasks"."due_date" ASC[0m
+  ↳ app/views/tasks/index.html.erb:13
+  [1m[35m (4.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:32
+  Rendered tasks/index.html.erb within layouts/application (35.2ms)
+Completed 200 OK in 126ms (Views: 75.2ms | ActiveRecord: 25.8ms)
+
+
+Started GET "/tasks/12/edit" for 127.0.0.1 at 2018-09-21 14:36:50 -0700
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mTask Load (14.4ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:23
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (10.6ms)
+  Rendered tasks/edit.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 93ms (Views: 67.9ms | ActiveRecord: 14.4ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-09-21 14:36:55 -0700
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (13.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" ORDER BY "tasks"."due_date" ASC[0m
+  ↳ app/views/tasks/index.html.erb:13
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:32
+  Rendered tasks/index.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 102ms (Views: 81.8ms | ActiveRecord: 14.4ms)
+
+
+Started GET "/tasks/12" for 127.0.0.1 at 2018-09-21 14:36:59 -0700
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mTask Load (2.4ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:28
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 53ms (Views: 40.7ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-09-21 14:37:06 -0700
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" ORDER BY "tasks"."due_date" ASC[0m
+  ↳ app/views/tasks/index.html.erb:13
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:32
+  Rendered tasks/index.html.erb within layouts/application (25.4ms)
+Completed 200 OK in 109ms (Views: 101.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/tasks/8" for 127.0.0.1 at 2018-09-21 15:29:22 -0700
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:28
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 236ms (Views: 218.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/tasks/8/edit" for 127.0.0.1 at 2018-09-21 15:29:28 -0700
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTask Load (6.7ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:23
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (17.0ms)
+  Rendered tasks/edit.html.erb within layouts/application (25.9ms)
+Completed 200 OK in 96ms (Views: 80.3ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/tasks/8/edit" for 127.0.0.1 at 2018-09-21 15:32:00 -0700
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:23
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (6.3ms)
+  Rendered tasks/edit.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 145ms (Views: 135.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tasks/8/edit" for 127.0.0.1 at 2018-09-21 15:32:20 -0700
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:23
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (5.6ms)
+  Rendered tasks/edit.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 82ms (Views: 72.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/tasks/8/edit" for 127.0.0.1 at 2018-09-21 15:33:18 -0700
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:23
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (9.5ms)
+  Rendered tasks/edit.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 103ms (Views: 96.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tasks/8/edit" for 127.0.0.1 at 2018-09-21 15:33:21 -0700
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:23
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (4.5ms)
+  Rendered tasks/edit.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 52ms (Views: 45.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tasks/8/edit" for 127.0.0.1 at 2018-09-21 15:34:38 -0700
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:23
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (5.7ms)
+  Rendered tasks/edit.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 123ms (Views: 115.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/tasks/8/edit" for 127.0.0.1 at 2018-09-21 15:38:17 -0700
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:23
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (4.2ms)
+  Rendered tasks/edit.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 164ms (Views: 152.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tasks/8/edit" for 127.0.0.1 at 2018-09-21 15:38:22 -0700
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:23
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (4.6ms)
+  Rendered tasks/edit.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 65ms (Views: 57.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/tasks/8/edit" for 127.0.0.1 at 2018-09-21 15:40:21 -0700
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:23
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (8.1ms)
+  Rendered tasks/edit.html.erb within layouts/application (16.2ms)
+Completed 200 OK in 145ms (Views: 133.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tasks/8/edit" for 127.0.0.1 at 2018-09-21 15:40:41 -0700
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:23
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (6.0ms)
+  Rendered tasks/edit.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 89ms (Views: 79.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/tasks/8/edit" for 127.0.0.1 at 2018-09-21 15:40:55 -0700
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:23
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (3.7ms)
+  Rendered tasks/edit.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 87ms (Views: 78.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tasks/8/edit" for 127.0.0.1 at 2018-09-21 15:41:06 -0700
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:23
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (5.1ms)
+  Rendered tasks/edit.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 97ms (Views: 86.4ms | ActiveRecord: 1.7ms)
+
+
+Started PATCH "/tasks/8" for 127.0.0.1 at 2018-09-21 15:41:48 -0700
+Processing by TasksController#update as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eSjOrEoLs+PssHG16ddDNZMR2yJivNF5b3vFFD/If3YpMETpNmqmqFkWbBvP6mQWfmhyitkdHqsDhmIFF43Gvw==", "task"=>{"item"=>"finish task master", "description"=>"details on info", "due_date(1i)"=>"2018", "due_date(2i)"=>"9", "due_date(3i)"=>"22"}, "commit"=>"Update Task!", "id"=>"8"}
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:64
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:64
+Redirected to http://localhost:3000/tasks/8
+Completed 200 OK in 6ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/tasks/8" for 127.0.0.1 at 2018-09-21 15:41:48 -0700
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTask Load (10.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:28
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 74ms (Views: 54.7ms | ActiveRecord: 10.2ms)
+
+
+Started DELETE "/tasks/8" for 127.0.0.1 at 2018-09-21 15:41:53 -0700
+Processing by TasksController#destroy as HTML
+  Parameters: {"authenticity_token"=>"OqPsd48Byi10L5rEaUCL6WcYHkUMd4lIKTe/9skCpvJqu2Yy82DfZsGJh2pPfazKimG37bfWRppFyhjn4UcfOw==", "id"=>"8"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:73
+  [1m[36mTask Destroy (14.0ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = $1[0m  [["id", 8]]
+  ↳ app/controllers/tasks_controller.rb:73
+  [1m[35m (8.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:73
+Redirected to http://localhost:3000/
+Completed 302 Found in 30ms (ActiveRecord: 23.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-09-21 15:41:53 -0700
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" ORDER BY "tasks"."due_date" ASC[0m
+  ↳ app/views/tasks/index.html.erb:13
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:32
+  Rendered tasks/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 43ms (Views: 36.1ms | ActiveRecord: 2.5ms)
+
+

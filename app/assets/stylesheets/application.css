@@ -103,6 +103,10 @@ a[href]{
     box-shadow: 3px 3px 3px grey;
 }
 
+select[id*="task_due_date"]{
+    width: 125px;
+}
+
 table {
     margin: 20px;
     border-collapse: collapse;
