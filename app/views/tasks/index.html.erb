@@ -1,14 +1,29 @@
-<article>
+<p class="task-list">
   <% tasks = Task.all %>
-  <ol>
+
   <% @tasks.each do |task| %>
+    <ol>
       <li><a href="/tasks/<%= task.id %>"><%= task.item %></li>
+    </ol>
+    <p class="actions" id="changi">
+      <%= link_to "Edit This Task", edit_task_path(task) %>
+    </p>
+    <p class="actions" id="deleti">
+      <%= link_to "Delete This Task", task, method: :delete, data: {confirm: "Are you sure about that?"} %>
+    </p>
+    <p class="actions" id="complete">
+      <%= link_to "Completed! :)", task_complete_path(task), method: :patch %>
+    </p>
+    <p class="actions" id="incomplete">
+      <%= link_to "INCompleted! :o!", task_incomplete_path(task), method: :patch%>
+    </p>
+
   <% end %>
-  </ol>
+
   <% if tasks.size == 0 %>
     <em> PARTAY! EAT, SLEEP, AND BE MERRY YOU HAVE NO TASKS!!!!</em>
   <% end %>
-</article>
+
     <footer>
   <p>Find me in app/views/tasks/index.html.erb</p>
 </footer>

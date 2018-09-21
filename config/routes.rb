@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   get '/tasks/:id/edit', to: 'tasks#edit', as: 'edit_task'
   # route to retrieve a specific task
   get '/tasks/:id', to: 'tasks#show', as: 'task'
+
+  # route to PATCH mark a task as complete
+  patch '/task/:id/completed', to: 'tasks#complete', as: 'task_complete'
+  # route to PATCH mark a task as complete
+  patch '/task/:id/incomplete', to: 'tasks#incomplete', as: 'task_incomplete'
   # route to PATCH/PUT update a task
   patch '/tasks/:id', to: 'tasks#update'
   # route to DELETE a task

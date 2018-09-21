@@ -1,29 +1,46 @@
 <% if @task.nil? %>
      <h1> 404 not found</h1>
 <% else %>
-  <header class="details-headings">
-    <ul>
-      <li>#</li>
-      <li>Task</li>
-      <li>Description</li>
-      <li>Complete By</li>
-    </ul>
-  </header>
-  <article class="taski">
-    <p><%=@task.id %></p>
-    <p><%=@task.item %></p>
-    <p><%= @task.description%></p>
-    <p><%= @task.due_date %></p>
-    <p><%= @task.completion_date %></p>
-  </article>
-  <article class="changi">
-    <%= link_to "Edit This Task", edit_task_path(@task.id)%>
-  </article>
-  <article class="deleti">
-    <%= link_to "Delete This Task", @task, method: :delete%>
-  </article>
-  <article class="completi">
-    <%= link_to "Mark Complete", @task.id%>
-
-  </article>
+  <table id="show_task_table">
+    <tr>
+      <th>#</th>
+      <th>TASK</th>
+      <th>DESCRIPTION</th>
+      <th>DUE DATE</th>
+      <th>COMPLETED ON</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td><%=@task.id %></td>
+        <td><%=@task.item %></td>
+        <td><%= @task.description%></td>
+        <td><%= @task.due_date%></td>
+        <td><%= @task.completion_date%></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="actions">
+      <%= link_to "Edit This Task", edit_task_path(@task.id), id: "changi" %>
+      <%= link_to "Delete This Task", @task, method: :delete, data: {confirm: "Are you sure about that?"}, id: "deleti" %>
+      <%= link_to "Completed! :)", task_complete_path(@task), method: :patch, id: "complete" %>
+      <%= link_to "INCompleted! :o!", task_incomplete_path(@task), method: :patch, id: "incomplete"%>
+  </div>
 <% end %>
+
+
+<!--  <header class="details-headings">-->
+<!--    <ul>-->
+<!--      <li>#</li>-->
+<!--      <li>Task</li>-->
+<!--      <li>Description</li>-->
+<!--      <li>Due Date</li>-->
+<!--      <li>Completed On</li>-->
+<!--    </ul>-->
+<!--  </header>-->
+<!--  <article class="taski">-->
+<!--    <p><%#=@task.id %></p>-->
+<!--    <p><%#=@task.item %></p>-->
+<!--    <p><%#= @task.description%></p>-->
+<!--    <p><%#= @task.due_date %></p>-->
+<!--    <p><%#= @task.completion_date %></p>-->
+<!--  </article>-->

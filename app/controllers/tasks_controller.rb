@@ -14,7 +14,7 @@ require 'pry'
 #     completion: 'September 18, 2018'}]
 
 class TasksController < ApplicationController
-  before_action :get_task, only: [:edit, :update, :destroy]
+  before_action :get_task, only: [:edit, :update, :destroy, :complete, :incomplete]
   def index
     @tasks = Task.all
   end
@@ -34,7 +34,8 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(item: params[:task][:item],
                      description: params[:task][:description],
-                     completion_date: params[:task][:completion_date])
+                     due_date: params[:task][:due_date],
+                     completion_date: nil)
     if @task.save
       redirect_to root_path
     else
@@ -55,8 +56,9 @@ class TasksController < ApplicationController
     # raise params.inspect
     if @task.update(item: params[:task][:item],
                     description: params[:task][:description],
+                    due_date: params[:task][:due_date],
                     completion_date: params[:task][:completion_date])
-      redirect_to root_path
+      redirect_to task_path
     else
       render :new
     end
@@ -67,4 +69,17 @@ class TasksController < ApplicationController
     @task.destroy
     redirect_to root_path
   end
+
+  def complete
+    # raise
+    @task.update(completion_date: DateTime.now)
+
+    redirect_to task_path
+  end
+
+  def incomplete
+    @task.update(completion_date: nil)
+    redirect_to task_path
+  end
+
 end

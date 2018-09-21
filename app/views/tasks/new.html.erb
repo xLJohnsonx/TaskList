@@ -3,11 +3,13 @@
   <%= f.label "Task" %>
   <%= f.text_field :item %>
 
-  <%= f.label :description %>
+  <%= f.label "Details" %>
   <%= f.text_field :description %>
 
   <%= f.label "Due Date:" %>
-  <%= f.text_field :completion_date %>
+  <%= f.text_field :due_date %>
+
+  <%= f.hidden_field :completion_date, :value => nil %>
 
   <%= f.submit "Do it!", class: "task-button" %>
 <% end %>

@@ -10,10 +10,12 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *=
  *= require_tree .
  *= require_self
  */
-*= require simple_calendar
+/*require jquery.ui.datepicker*/
+
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 body {
     font-family: 'Poppins', sans-serif;
@@ -39,10 +41,34 @@ footer {
     align-content: flex-end;
     color: #666666;
 }
-.taski {
+
+table {
+    margin: 20px;
+    border-collapse: collapse;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#show_task_table th {
+    font-size: large;
+    background-color: lightgrey;
+}
+
+
+#show_task_table th, #show_task_table td {
+    padding-left: 30px;
+    padding-right: 30px;
+    border-bottom: 1px solid gold;
+    text-align: left;
+}
+
+
+#all_task_table tr:hover {background-color: #f5f5f5;}
+
+
+.actions{
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
     flex-wrap: wrap;
 }
 .article h1{
@@ -57,9 +83,11 @@ ul {
 .details-headings ul{
     display: flex;
     justify-content: flex-start;
+    padding-left: 100px;
 }
 
+
 .details-headings ul li{
-    padding-left: 10px;
-    padding-right: 100px;
+    margin-left: 75px;
+    padding-right: 75px;
 }
