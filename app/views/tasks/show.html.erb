@@ -12,7 +12,11 @@
     <tbody>
       <tr>
         <td><%=@task.id %></td>
-        <td><%=@task.item %></td>
+        <% if @task.completion_date.nil? %>
+          <td><%=@task.item %></td>
+        <% else %>
+          <td id="done"><%=@task.item %></td>
+        <% end %>
         <td><%= @task.description%></td>
         <td><%= @task.due_date%></td>
         <td><%= @task.completion_date%></td>
@@ -20,10 +24,10 @@
     </tbody>
   </table>
   <div class="actions">
-      <%= link_to "Edit This Task", edit_task_path(@task.id), id: "changi" %>
-      <%= link_to "Delete This Task", @task, method: :delete, data: {confirm: "Are you sure about that?"}, id: "deleti" %>
-      <%= link_to "Completed! :)", task_complete_path(@task), method: :patch, id: "complete" %>
-      <%= link_to "INCompleted! :o!", task_incomplete_path(@task), method: :patch, id: "incomplete"%>
+      <%= link_to "Edit This Task", edit_task_path(@task.id), id: "changi", class: "hvr-float" %>
+      <%= link_to "Delete This Task", @task, method: :delete, data: {confirm: "Are you sure about that?"}, id: "deleti", class: "hvr-float" %>
+      <%= link_to "Completed! :)", task_complete_path(@task), method: :patch, id: "complete", class: "hvr-float" %>
+      <%= link_to "JK - Not complete! :o!", task_incomplete_path(@task), method: :patch, id: "incomplete", class: "hvr-float"%>
   </div>
 <% end %>
 

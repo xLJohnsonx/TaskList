@@ -1,30 +1,39 @@
-<p class="task-list">
+<table id="index_task_table">
   <% tasks = Task.all %>
-
-  <% @tasks.each do |task| %>
-    <ol>
-      <li><a href="/tasks/<%= task.id %>"><%= task.item %></li>
-    </ol>
-    <p class="actions" id="changi">
-      <%= link_to "Edit This Task", edit_task_path(task) %>
-    </p>
-    <p class="actions" id="deleti">
-      <%= link_to "Delete This Task", task, method: :delete, data: {confirm: "Are you sure about that?"} %>
-    </p>
-    <p class="actions" id="complete">
-      <%= link_to "Completed! :)", task_complete_path(task), method: :patch %>
-    </p>
-    <p class="actions" id="incomplete">
-      <%= link_to "INCompleted! :o!", task_incomplete_path(task), method: :patch%>
-    </p>
-
-  <% end %>
+    <tr>
+      <th>#</th>
+      <th>TASK</th>
+      <th>ACTIONS</th>
+     <%#  <th>DESCRIPTION</th>
+      <th>DUE DATE</th>
+      <th>COMPLETED ON</th>%>
+    </tr>
+    <tbody>
+    <% ordered_tasks = @tasks.order(:due_date) %>
+  <% ordered_tasks.each_with_index do |task, i| %>
+      <tr>
+        <td><%=i + 1%></td>
+        <% if task.completion_date.nil? %>
+          <td><a href="/tasks/<%= task.id %>"><%= task.item %></td>
+        <% else %>
+          <td><a href="/tasks/<%= task.id %>" id="done"><%= task.item %></td>
+        <% end %>
+        <td class="index_actions">
+          <%= link_to "Edit", edit_task_path(task.id), id: "changi", class: "hvr-ripple-out" %>
+          <%= link_to "Delete", task, method: :delete, data: {confirm: "You sure about that?"}, id: "deleti", class: "hvr-ripple-out" %>
+          <%= link_to "Completed! :)", task_complete_path(task), method: :patch, id: "complete", class: "hvr-ripple-out" %>
+          <%= link_to "JK - Not Done! :o!", task_incomplete_path(task), method: :patch, id: "incomplete", class: "hvr-ripple-out"%>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
 
   <% if tasks.size == 0 %>
     <em> PARTAY! EAT, SLEEP, AND BE MERRY YOU HAVE NO TASKS!!!!</em>
   <% end %>
 
     <footer>
-  <p>Find me in app/views/tasks/index.html.erb</p>
+  <p>These tasks are off the Rails!</p>
 </footer>
 
