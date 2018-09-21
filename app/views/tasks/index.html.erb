@@ -14,15 +14,15 @@
       <tr>
         <td><%=i + 1%></td>
         <% if task.completion_date.nil? %>
-          <td><a href="/tasks/<%= task.id %>"><%= task.item %></td>
+          <td><a href="/tasks/<%= task.id %>"><%= task.item %> 🔍 </a></td>
         <% else %>
-          <td><a href="/tasks/<%= task.id %>" id="done"><%= task.item %></td>
+          <td><a href="/tasks/<%= task.id %>" id="done"><%= task.item %> 🔍 </a></td>
         <% end %>
         <td class="index_actions">
-          <%= link_to "Edit", edit_task_path(task.id), id: "changi", class: "hvr-ripple-out" %>
-          <%= link_to "Delete", task, method: :delete, data: {confirm: "You sure about that?"}, id: "deleti", class: "hvr-ripple-out" %>
-          <%= link_to "Completed! :)", task_complete_path(task), method: :patch, id: "complete", class: "hvr-ripple-out" %>
-          <%= link_to "JK - Not Done! :o!", task_incomplete_path(task), method: :patch, id: "incomplete", class: "hvr-ripple-out"%>
+          <%= link_to "✏️", edit_task_path(task.id), id: "changi", class: "hvr-ripple-out" %>
+          <%= link_to "🔥", task, method: :delete, data: {confirm: "You sure about that? Select OK to remove task #{task.item.upcase} ForEVVVeeeR!"}, id: "deleti", class: "hvr-ripple-out" %>
+          <%= link_to "🖍", task_complete_path(task), method: :patch, id: "complete", class: "hvr-ripple-out" %>
+          <%= link_to "😱", task_incomplete_path(task), method: :patch, id: "incomplete", class: "hvr-ripple-out"%>
         </td>
       </tr>
     <% end %>

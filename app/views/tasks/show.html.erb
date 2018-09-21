@@ -23,11 +23,11 @@
       </tr>
     </tbody>
   </table>
-  <div class="actions">
+  <div class="show_actions">
       <%= link_to "Edit This Task", edit_task_path(@task.id), id: "changi", class: "hvr-float" %>
-      <%= link_to "Delete This Task", @task, method: :delete, data: {confirm: "Are you sure about that?"}, id: "deleti", class: "hvr-float" %>
-      <%= link_to "Completed! :)", task_complete_path(@task), method: :patch, id: "complete", class: "hvr-float" %>
-      <%= link_to "JK - Not complete! :o!", task_incomplete_path(@task), method: :patch, id: "incomplete", class: "hvr-float"%>
+      <%= link_to "Delete This Task", @task, method: :delete, data: {confirm: "Are you sure about that? Select OK to remove task #{@task.item.upcase} ForEVVVeeeR!"}, id: "deleti", class: "hvr-float" %>
+      <%= link_to "Completed!", task_complete_path(@task), method: :patch, id: "complete", class: "hvr-float" %>
+      <%= link_to "JK - Not complete!", task_incomplete_path(@task), method: :patch, id: "incomplete", class: "hvr-float"%>
   </div>
 <% end %>
 
