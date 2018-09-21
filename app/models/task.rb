@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
-  validates :item,
-            uniqueness: true
+  validates_presence_of :item,
+                        :message => 'you must enter a task'
+                         # uniqueness: true
 end

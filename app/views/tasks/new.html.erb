@@ -1,15 +1,10 @@
-<%= form_with model: @task, class:"task_form" do |f| %>
-  <p>Ugh Another Task?! Give me the detes and I'll add it in:</p>
-  <%= f.label "Task" %>
-  <%= f.text_field :item %>
+<%= render partial: "form",
+           locals: { action_name: "Ugh Another Task?! Give me the detes and I'll add it in:",
+                     button_title: "Add Task!"} %>
+<%# to DRY up - moved form contents to views/tasks/_form.html.erb %>
 
-  <%= f.label "Details" %>
-  <%= f.text_field :description %>
-
-  <%= f.label "Due Date:" %>
-  <%= f.text_field :due_date %>
-
-  <%= f.hidden_field :completion_date, :value => nil %>
-
-  <%= f.submit "Do it!", class: "task-button" %>
-<% end %>
+<%# attempting to prompt user when a form is incomplete %>
+<%# <% m.errors.each do |attr,msg|  %>
+<%#  <%=attr %>
+<%#  <%=msg %>
+<%# <% end %>

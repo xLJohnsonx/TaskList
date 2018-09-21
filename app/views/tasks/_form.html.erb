@@ -1,0 +1,14 @@
+<h1 class="action-name"><%= action_name %></h1>
+
+<%= form_with  model: @task, class:"task_edit" do |f| %>
+  <%= f.label "Task:" %>
+  <%= f.text_field :item, :required => true %> <%#, value: @task.item  %>
+
+  <%= f.label "Details:" %>
+  <%= f.text_field :description %> <%# , value: @task.description%>
+
+  <%= f.label "Due Date:" %>
+  <%= f.date_select :due_date %> <%# , value: @task.completion_date%>
+
+  <%= f.submit button_title, class: "task-button hvr-pop" %>
+<% end %>

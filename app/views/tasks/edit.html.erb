@@ -1,13 +1,5 @@
-<%= form_with  model: @task, class:"task_edit" do |f| %>
-  <p>Oh yeah, Task Refactor! What changes ya got for me?</p>
-  <%= f.label "Task" %>
-  <%= f.text_field :item%> <%#, value: @task.item  %>
+<%= render partial: "form",
+           locals: { action_name: "Oh yeah, Task Refactor! What changes ya got for me?",
+                     button_title: "Update Task!" }%>
 
-  <%= f.label "Details" %>
-  <%= f.text_field :description %> <%# , value: @task.description%>
-
-  <%= f.label "Due Date:" %>
-  <%= f.text_field :completion_date%> <%# , value: @task.completion_date%>
-
-  <%= f.submit "Change it!", class: "change-button" %>
-<% end %>
+<%# to DRY up - moved form contents to views/tasks/_form.html.erb %>

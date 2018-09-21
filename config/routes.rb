@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   # route to retrieve a specific task
   get '/tasks/:id', to: 'tasks#show', as: 'task'
 
-  # route to PATCH mark a task as complete
+  # route to PATCH mark a task as complete ---> these work
+  # do I need the as paths here????
   patch '/task/:id/completed', to: 'tasks#complete', as: 'task_complete'
   # route to PATCH mark a task as complete
   patch '/task/:id/incomplete', to: 'tasks#incomplete', as: 'task_incomplete'

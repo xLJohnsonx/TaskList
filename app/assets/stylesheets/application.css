@@ -44,6 +44,8 @@ li a[href]{
     background-color: white;
     padding: 1em;
     border: 2px solid #2E2F30;
+    border-radius: 12px;
+    box-shadow: 5px 5px 5px grey;
 }
 
 footer {
@@ -98,6 +100,7 @@ a[href]{
     border-radius: 10px;
     padding: 1em;
     margin: 10px;
+    box-shadow: 3px 3px 3px grey;
 }
 
 table {
@@ -171,6 +174,30 @@ ul {
 .details-headings ul li{
     margin-left: 75px;
     padding-right: 75px;
+}
+.action-name {
+    display: flex;
+    justify-content: center;
+}
+.task_edit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40em;
+}
+
+.task-button {
+    margin-top: 1em;
+    padding: 1em;
+    border: solid 2px #363537;
+    background-color: lawngreen;
+    border-radius: 10px;
+    width: 30em;
+    color: #EF2D56;
+    font-size: larger;
 }
 /* ripple on hover effect index action buttons*/
 @-webkit-keyframes hvr-ripple-out {
@@ -276,3 +303,34 @@ ul {
     transform: scale(0);
 }
 
+/* Pop on hover action for add task button*/
+
+@-webkit-keyframes hvr-pop {
+    50% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+}
+@keyframes hvr-pop {
+    50% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+}
+.hvr-pop {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.hvr-pop:hover, .hvr-pop:focus, .hvr-pop:active {
+    -webkit-animation-name: hvr-pop;
+    animation-name: hvr-pop;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+}
